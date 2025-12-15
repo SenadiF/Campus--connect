@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+
+    <title>Campus Connect</title>
+</head>
+<body>
+
+    <h1>Campus Connect</h1>
+    <p>A place for students to share thoughts and experiences.</p>
+
+    <textarea id="messageBox" placeholder="Write your message here..." rows="4" cols="50"></textarea>
+    <br><br>
+    <button onclick="postMessage()">Post</button>
+
+    <h2>Posts</h2>
+    <div id="posts"></div>
+
+    <script>
+    function postMessage() {
+        const message = document.getElementById("messageBox").value;
+
+        if (message.trim() === "") {
+            return;
+        }
+
+        const postCard = document.createElement("div");
+        postCard.className = "post";
+
+        const postText = document.createElement("div");
+        postText.className = "post-text";
+        postText.textContent = message;
+
+        const timeDiv = document.createElement("div");
+        timeDiv.className = "post-time";
+        const now = new Date();
+        timeDiv.textContent = "🕒 " + now.toLocaleString();
+
+        postCard.appendChild(postText);
+        postCard.appendChild(timeDiv);
+
+        document.getElementById("posts").appendChild(postCard);
+        document.getElementById("messageBox").value = "";
+    }
+</script>
+
+
+
+</body>
+</html>
